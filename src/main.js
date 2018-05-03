@@ -27,18 +27,19 @@ describe('calculo de marcador', function () {
         else if (esCorrecta && tiempo <= 10) {
             return puntos + 1;
         }
-        else if (esCorrecta && tiempo > 10 && tiempo < 20) {
+        else if (esCorrecta || !esCorrecta && tiempo >= 20) {
+            return puntos - 3;
+        }
+        else if (esCorrecta && tiempo > 10) {
             return puntos;
         }
         else if (!esCorrecta && tiempo < 10) {
             return puntos - 1;
         }
-        else if (!esCorrecta && tiempo >= 10 && tiempo < 20) {
+        else if (!esCorrecta && tiempo >= 10) {
             return puntos - 2;
         }
-        else if (esCorrecta || !esCorrecta && tiempo >= 20) {
-            return puntos - 3;
-        }
+
     }
 
     it("suma mas puntos si acierta muy rapido", function () {
