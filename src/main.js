@@ -30,6 +30,6 @@ describe('calculo de marcador', function () {
     it("suma mas puntos si acierta muy rapido", function () {
         expect(recalcularMarcador(0, true, 1)).toBe(2);
         expect(recalcularMarcador(2, true, 1)).toBe(4);
-        expect(recalcularMarcador(2, true, 3)).toBe(4);
+        expect(recalcularMarcador(2, true, 3)).toBe(3);
     });
 });
