@@ -38,6 +38,8 @@ describe('calculo de marcador', function () {
         }
         else if (esCorrecta || !esCorrecta && tiempo >= 20) {
             return puntos - 3;
+        } else if (null && tiempo > 20) {
+            return puntos - 3;
         }
     }
 
@@ -56,5 +58,8 @@ describe('calculo de marcador', function () {
         expect(recalcularMarcador(3, true, 20)).toBe(0);
         expect(recalcularMarcador(3, false, 20)).toBe(0);
 
+    });
+    it("no contestas en 20 segundos pasas de pregunta y pierdes tres puntos", function () {
+        expect(recalcularMarcador(4, null, 21)).toBe(1);
     });
 });
