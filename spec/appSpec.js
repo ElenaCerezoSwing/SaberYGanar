@@ -28,6 +28,7 @@ describe('cálculo del marcador', function () {
         }
 
     }
+    // Ele, acuérdate de probar la implementación de switch/case
 
     function recalcularFallandoPregunta(marcador, tiempo) {
         if (tiempo < 10) {
@@ -37,7 +38,16 @@ describe('cálculo del marcador', function () {
             return marcador - 2;
         }
 
+
+
     }
+    function recalcularSinRespuesta(marcador, tiempo) {
+        if (tiempo >= 20) {
+            return marcador - 3;
+
+        }
+    }
+
     it("suma los puntos si acierta muy rápido", function () {
 
         expect(recalcularAcertandoPregunta(3, 1)).toBe(5);
@@ -60,6 +70,11 @@ describe('cálculo del marcador', function () {
         expect(recalcularFallandoPregunta(3, 10)).toBe(1);
 
     });
+
+    it("resta puntos tras no respuesta después de 20 segundos", function () {
+        expect(recalcularSinRespuesta(3, 20)).toBe(0);
+        expect(recalcularSinRespuesta(3, 2357)).toBe(0);
+    })
 
 
 });
