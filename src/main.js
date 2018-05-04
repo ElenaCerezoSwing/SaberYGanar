@@ -5,7 +5,7 @@
 *      +Si acierto pregunta en menos de 2 segundos - sumo 2 puntos
 *          (0 puntos, pregunta correcta, 1 segundo) -> 2 puntos
 *          (1 punto, correcta, 1 segundo) -> 3 puntos
-*      Si fallo pregunta en mas de 10 segundos - resto 2 puntos
+*      +Si fallo pregunta en mas de 10 segundos - resto 2 puntos
 *      +Si acierto pregunta entre 2 y 10 segundos - sumo 1 punto
             (1 punto, correcta, 5 segundos) -> 2 puntos
 *      +Si acierto y tardo mas de 10 segundos - 0 puntos
@@ -27,19 +27,18 @@ describe('calculo de marcador', function () {
         else if (esCorrecta && tiempo <= 10) {
             return puntos + 1;
         }
-        else if (esCorrecta || !esCorrecta && tiempo >= 20) {
-            return puntos - 3;
-        }
-        else if (esCorrecta && tiempo > 10) {
+        else if (esCorrecta && tiempo > 10 && tiempo < 20) {
             return puntos;
         }
         else if (!esCorrecta && tiempo < 10) {
             return puntos - 1;
         }
-        else if (!esCorrecta && tiempo >= 10) {
+        else if (!esCorrecta && tiempo >= 10 && tiempo < 20) {
             return puntos - 2;
         }
-
+        else if (esCorrecta || !esCorrecta && tiempo >= 20) {
+            return puntos - 3;
+        }
     }
 
     it("suma mas puntos si acierta muy rapido", function () {
