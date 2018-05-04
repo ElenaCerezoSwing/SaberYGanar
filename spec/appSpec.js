@@ -15,59 +15,54 @@
 *
 *
 * */
-var questions = [
-    { title: '¿Cuántos años tiene Celio?', answer: { a: '35', b: 'No lo sabe ni ella', c: '25' }, correctAnswer: 'b' },
-    { title: '¿Cuál es la capital de Zambia?', answer: { a: 'Lusaka', b: 'Harare', c: 'Madrid' }, correctAnswer: 'a' },
-    { title: '¿Cuál es el nombre completo de Freud?', answer: { a: 'Adolf', b: 'Sefarad', c: 'Sigmund' }, correctAnswer: 'c' },
-    { title: '¿Cuál es el animal más rápido del mundo?', answer: { a: 'Guepardo', b: 'León', c: 'Tortuga' }, correctAnswer: 'a' }
-];
+
 
 
 describe('calculo de marcador', function () {
-    function recalcularMarcador(puntos, existeRespuesta, esCorrecta, tiempo) {
+    function recalcularMarcador(puntos, /*existeRespuesta,*/  esCorrecta, tiempo) {
 
 
-        if (existeRespuesta && esCorrecta && tiempo <= 2) {
+        if (/*existeRespuesta &&*/ esCorrecta && tiempo <= 2) {
             return puntos + 2;
         }
-        else if (existeRespuesta && esCorrecta && tiempo <= 10) {
+        else if (/*existeRespuesta &&*/esCorrecta && tiempo <= 10) {
             return puntos + 1;
         }
-        else if (existeRespuesta && esCorrecta && tiempo > 10 && tiempo < 20) {
+        else if (/*existeRespuesta &&*/esCorrecta && tiempo > 10 && tiempo < 20) {
             return puntos;
         }
-        else if (existeRespuesta && !esCorrecta && tiempo < 10) {
+        else if (/*existeRespuesta &&*/!esCorrecta && tiempo < 10) {
             return puntos - 1;
         }
-        else if (existeRespuesta && !esCorrecta && tiempo >= 10 && tiempo < 20) {
+        else if (/*existeRespuesta &&*/!esCorrecta && tiempo >= 10 && tiempo < 20) {
             return puntos - 2;
         }
-        else if (existeRespuesta && esCorrecta || !esCorrecta && tiempo >= 20) {
+        else if (/*existeRespuesta &&*/ /*esCorrecta || !esCorrecta &&*/ tiempo >= 20) {
             return puntos - 3;
         }
-        else if (!existeRespuesta && tiempo >= 20) {
-            return puntos - 3;
-        }
+        // else if (/*existeRespuesta &&*/ tiempo >= 20) {
+        //     return puntos - 3;
+        // }
     }
 
     it("suma mas puntos si acierta muy rapido", function () {
-        expect(recalcularMarcador(0, true, true, 1)).toBe(2);
-        expect(recalcularMarcador(2, true, true, 1)).toBe(4);
-        expect(recalcularMarcador(2, true, true, 3)).toBe(3);
-        expect(recalcularMarcador(3, true, true, 11)).toBe(3);
+        expect(recalcularMarcador(0, /*true,*/ true, 1)).toBe(2);
+        expect(recalcularMarcador(2, /*true,*/ true, 1)).toBe(4);
+        expect(recalcularMarcador(2, /*true,*/true, 3)).toBe(3);
+        expect(recalcularMarcador(3, /*true,*/ true, 11)).toBe(3);
     });
     it("resta mas puntos si falla muy lento", function () {
-        expect(recalcularMarcador(3, true, false, 1)).toBe(2);
-        expect(recalcularMarcador(3, true, false, 11)).toBe(1);
+        expect(recalcularMarcador(3,/*true,*/ false, 1)).toBe(2);
+        expect(recalcularMarcador(3,/*true,*/ false, 11)).toBe(1);
 
     });
     it("resta mas si el tiempo es superior o igual a 20 segundos", function () {
-        expect(recalcularMarcador(3, true, true, 20)).toBe(0);
-        expect(recalcularMarcador(3, true, false, 20)).toBe(0);
+        expect(recalcularMarcador(3,/*true,*/ true, 20)).toBe(0);
+        expect(recalcularMarcador(3, /*true,*/ false, 20)).toBe(0);
 
     });
     it("no contestas en 20 segundos pasas de pregunta y pierdes tres puntos", function () {
-        expect(recalcularMarcador(4, true, true, 20)).toBe(1);
-        expect(recalcularMarcador(4, true, false, 20)).toBe(1);
+        expect(recalcularMarcador(4, /*true,*/ true, 21)).toBe(1);
+        expect(recalcularMarcador(4, /*true,*/ false, 21)).toBe(1);
     });
 });
