@@ -41,11 +41,11 @@ describe('cálculo del marcador', function () {
 
 
     }
-    function recalcularSinRespuesta(marcador, tiempo) {
-        if (tiempo >= 20) {
-            return marcador - 3;
+    function recalcularSinRespuesta(marcador) {
 
-        }
+        return marcador - 3;
+
+
     }
 
     it("suma los puntos si acierta muy rápido", function () {
@@ -72,9 +72,9 @@ describe('cálculo del marcador', function () {
     });
 
     it("resta puntos tras no respuesta después de 20 segundos", function () {
-        expect(recalcularSinRespuesta(3, 20)).toBe(0);
-        expect(recalcularSinRespuesta(3, 2357)).toBe(0);
-    })
+        expect(recalcularSinRespuesta(3)).toBe(0);
+        // expect(recalcularSinRespuesta(3, 2357)).toBe(0);
+    });
 
 
 });
