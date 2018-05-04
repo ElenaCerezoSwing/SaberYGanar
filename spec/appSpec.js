@@ -20,10 +20,10 @@ describe('cálculo del marcador', function () {
         if (tiempo <= 2) {
             return marcador + 2;
         }
-        else if (tiempo <= 10) {
+        if (tiempo <= 10) {
             return marcador + 1;
         }
-        else if (tiempo > 10 && tiempo < 20) {
+        if (tiempo > 10 && tiempo < 20) {
             return marcador;
         }
 
@@ -33,7 +33,7 @@ describe('cálculo del marcador', function () {
         if (tiempo < 10) {
             return marcador - 1;
         }
-        else if (tiempo >= 10 && tiempo < 20) {
+        if (tiempo >= 10 && tiempo < 20) {
             return marcador - 2;
         }
 
