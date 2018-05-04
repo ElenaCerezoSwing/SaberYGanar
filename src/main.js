@@ -7,3 +7,6 @@ var questions = [
     { title: '¿Cuál es el animal más rápido del mundo?', answer: { a: 'Guepardo', b: 'León', c: 'Tortuga' }, correctAnswer: 'a' }
 ];
 
+for (var i = 0; i < questions.length; i++) {
+
+}
