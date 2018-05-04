@@ -12,9 +12,43 @@
 *      +Si fallo antes de 10 segundos - resto 1 punto
 *      No se puede pasar sin responder
 *      Si en 20 segundos no has respondido , pasa a siguiente pregunta y pierdes 3 punto
-*
+*answer: { a: 'Estrela', b: 'Rita', c: 'Todas las anteriores son correctas' }, correctAnswer: 'c' },
 *
 * */
+var question = {
+    id: 1,
+    value: "¿Cuáles son los nombres de Estela?",
+    answers: [
+        { id: 1, value: 'Estrela' },
+        { id: 2, value: 'Rita' },
+        { id: 3, value: 'Todas las respuestas son correctas' }
+    ],
+    correctAnswer: { id: 3 }
+};
+
+describe('matchear la respuesta correcta', function () {
+    function isCorrect(question, userAnswer, correctAnswer) {
+        if (!question.id) {
+            return false;
+        }
+        if (question.id) {
+            if (userAnswer === question.answers.id(3)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    }
+    it('is correct the answer', function () {
+        expect(isCorrect('¿Cuáles son los nombres de Estela?', 'Estrela', 'Todas las respuesta son correctas')).toBeTruthy();
+    });
+});
+
+
+
+
 describe('cálculo del marcador', function () {
     function recalcularAcertandoPregunta(marcador, tiempo) {
         if (tiempo <= 2) {
