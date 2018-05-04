@@ -38,15 +38,25 @@ describe('cálculo del marcador', function () {
         }
 
     }
-    it("suma los puntos si acierta rápido", function () {
+    it("suma los puntos si acierta muy rápido", function () {
 
         expect(recalcularAcertandoPregunta(3, 1)).toBe(5);
-        expect(recalcularAcertandoPregunta(3, 10)).toBe(4);
-        expect(recalcularAcertandoPregunta(3, 17)).toBe(3);
     });
-    it("resta los puntos si falla rápido", function () {
+
+    it("suma los puntos si acierta  rápido", function () {
+        expect(recalcularAcertandoPregunta(3, 10)).toBe(4);
+    });
+
+    it("suma los puntos si acierta lento", function () {
+        expect(recalcularAcertandoPregunta(3, 17)).toBe(3);
+
+    });
+    it("resta los puntos si falla muy rápido", function () {
 
         expect(recalcularFallandoPregunta(3, 1)).toBe(2);
+
+    });
+    it("resta los puntos si falla rápido", function () {
         expect(recalcularFallandoPregunta(3, 10)).toBe(1);
 
     });
