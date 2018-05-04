@@ -44,6 +44,13 @@ describe('cálculo del marcador', function () {
         expect(recalcularAcertandoPregunta(3, 10)).toBe(4);
         expect(recalcularAcertandoPregunta(3, 17)).toBe(3);
     });
+    it("resta los puntos si falla rápido", function () {
+
+        expect(recalcularFallandoPregunta(3, 1)).toBe(2);
+        expect(recalcularFallandoPregunta(3, 10)).toBe(1);
+
+    });
+
 
 });
 
